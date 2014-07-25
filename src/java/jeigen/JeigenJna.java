@@ -6,7 +6,6 @@
 
 package jeigen;
 
-import com.sun.jna.Native;
 import java.io.*;
 
 /**
