@@ -5,5 +5,9 @@ set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options a
 set(EIGEN_DIRECTORY . CACHE STRING "Eigen directory.  The directory specified should have a subdirectory 'Eigen'.")
 include_directories(${EIGEN_DIRECTORY})
 
-add_library( jeigen SHARED jeigen.cpp )
+find_package(JNI)
 
+include_directories(${JNI_INCLUDE_DIRS})
+
+
+add_library( jeigen SHARED jeigen_impl.cpp jeigen.cpp)

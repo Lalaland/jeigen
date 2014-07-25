@@ -14,24 +14,9 @@ import java.io.*;
  */
 class JeigenJna {
 	public static class Jeigen {
-		public static final void addToJnaPath(String newpath ) throws Exception {
-			String oldLibraryPath = System.getProperty( "jna.library.path");
-//			System.out.println("adding " + newpath);
-            if( oldLibraryPath != null ) {
-				System.setProperty( "jna.library.path", oldLibraryPath + File.pathSeparator + newpath );
-			} else {
-				System.setProperty( "jna.library.path", newpath );
-			}
-		}
-		static {
-			try{
-				addToJnaPath(System.getProperty("java.library.path"));
-			} catch(Exception e ) {
-				e.printStackTrace();
-				System.exit(1);
-			}
-			Native.register("jeigen");
-		}
+            static {
+                    System.loadLibrary("jeigen");
+            }
 		
 		public static native void init();
 		public static native void dense_multiply( int rows, int middle, int cols, double []first, double []second, double []result );
